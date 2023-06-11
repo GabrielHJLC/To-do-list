@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn{
+    margin-top: 1rem;
+}
