@@ -1,10 +1,11 @@
 <?php 
 
-$localhost = 'localhost';
-$tablename = 'tasklist';
-$username = 'root';
-$senha = 'emigam7344@';
+$host = 'db.dooqutqvqrngxnjlapay.supabase.co';
+$port = '5432';
+$dbname = 'tasklist';
+$user = 'postgres';
+$password = 'emigam7344@';
 
-$conn = new mysqli($localhost, $username, $senha, $tablename);
+$conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
 
 ?>
