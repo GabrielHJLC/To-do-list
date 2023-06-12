@@ -1,11 +1,11 @@
 <?php 
+require '../../vendor/autoload.php';
 
-$host = 'db.dooqutqvqrngxnjlapay.supabase.co';
-$port = '5432';
-$dbname = 'tasklist';
-$user = 'postgres';
-$password = 'emigam7344@';
+$dbHost = getenv('DB_HOST');
+$dbUser = getenv('DB_USER');
+$dbPassword = getenv('DB_PASSWORD');
+$dbName = getenv('DB_NAME');
 
-$conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
+$conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 ?>
