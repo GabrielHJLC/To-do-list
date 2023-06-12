@@ -19,8 +19,8 @@ if (isset($_GET['id'])) {
         <div class="formulario">
             <h1>Area De Risco</h1>
             <h5>Tem certeza de que deseja deletar essa linha?</h5>
-            <button class="btn btn-primary" id="return_button">Voltar</button>
             <button class="btn btn-danger" id="delete_button">Deletar</button>
+            <button class="btn btn-primary" id="return_button">Voltar</button>
         </div>
     </div>
 

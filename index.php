@@ -2,9 +2,20 @@
 
 require_once('php/conexao.php');
 
-$sql = 'SELECT * FROM tasklist';
+
+session_start();
+
+if (isset($_SESSION['id'])) {
+    $id_usuario = $_SESSION['id'];
+}else{
+    header("location: urls/login_form.php");
+}
+
+$sql = "SELECT * FROM tasklist WHERE Id_user = '$id_usuario'";
 
 $consulta = $conn->query($sql);
+
+$contagem = 0;
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +28,12 @@ $consulta = $conn->query($sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
+    <div class="nav">
+        <nav class="nav-bar">
+            <h1 class="title">To Do List</h1>
+            <button id="btn-logout" class="btn-logout btn btn-danger">Sair</button>
+        </nav>
+    </div>
     <div class="content">
         <main>
             <div class="box-wrapper">
@@ -41,9 +58,11 @@ $consulta = $conn->query($sql);
                                 $id = $conteudo['id'];
                                 $Nome = $conteudo['Nome'];
                                 $desc = $conteudo['descricao'];
+
+                                $contagem ++;
                             ?>
                             <tr>
-                                <th scope="row"><?=$id?></th>
+                                <th scope="row"><?=$contagem?></th>
                                 <td><?=$Nome?></td>
                                 <td><?=$desc?></td>
                                 <td>
@@ -67,9 +86,13 @@ $consulta = $conn->query($sql);
     </div>
     <script>
         let add_tarefa = document.getElementById('add_tarefa')
+        let logout = document.getElementById('btn-logout')
 
         add_tarefa.addEventListener('click', ()=>{
-            location.href = 'urls/add_task.php'
+            location.href = 'urls/add_task.php?id_user=<?=$id_usuario?>'
+        })
+        logout.addEventListener('click', ()=>{
+            location.href = 'urls/sistemas/logout.php'
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

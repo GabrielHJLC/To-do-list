@@ -1,3 +1,10 @@
+<?php 
+
+if (isset($_GET['id_user'])) {
+    $id = $_GET['id_user'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +16,7 @@
 </head>
 <body>
     <div class="content">
-        <form action="sistemas/add.php" method="post" class="formulario">
+        <form action="sistemas/add.php?id_user=<?=$id?>" method="post" class="formulario">
             <div class="input-form">
                 <label for="LabelName" class="form-label">Nome</label>
                 <input type="text" id="inputName" name="inputName" class="form-control" aria-labelledby="NameHelpBlock" required>

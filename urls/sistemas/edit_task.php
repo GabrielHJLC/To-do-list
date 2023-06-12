@@ -2,6 +2,9 @@
 
 require_once('../../php/conexao.php');
 
+if(isset($_POST['botao'])){
+    $valor = $_POST['botao'];
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
@@ -9,15 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $desc = $_POST['inputDesc'];
     $sql = "UPDATE `tasklist` SET `Nome` = '$nome', `descricao` = '$desc' WHERE `tasklist`.`id` = $id;";
 
-    if($conn->query($sql) === TRUE){
-        echo 'cadastrado com sucesso';
+    if($valor == 'Enviar'){
+        if($conn->query($sql) === TRUE){
+            echo 'cadastrado com sucesso';
+        }else{
+            echo 'error' .$conn->error;
+        }
+    
+        $conn->close();
+    
+        header('location: ../../index.php');
     }else{
-        echo 'error' .$conn->error;
+        header('location: ../../index.php');
     }
-
-    $conn->close();
-
-    header('location: ../../index.php');
 
 }
 
