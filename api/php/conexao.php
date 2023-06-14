@@ -8,7 +8,7 @@ $dbName = 'tasklist';
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 if(!$conn){
-    echo 'error' . $conn->error_log;
+    echo 'error' . $conn->connect_error;
 }else{
     echo '....';
 }
