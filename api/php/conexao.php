@@ -5,10 +5,10 @@ require '../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$dbHost = getenv('DB_HOST');
-$dbUser = getenv('DB_USER');
-$dbPassword = getenv('DB_PASSWORD');
-$dbName = getenv('DB_NAME');
+$dbHost = 'localhost';
+$dbUser = 'root';
+$dbPassword = 'emigam2008';
+$dbName = 'tasklist';
 
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
