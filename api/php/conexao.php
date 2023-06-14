@@ -1,10 +1,5 @@
 <?php 
 
-require '../vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 $dbHost = 'localhost';
 $dbUser = 'root';
 $dbPassword = 'emigam2008';
